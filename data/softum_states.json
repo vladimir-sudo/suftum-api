@@ -1,0 +1,56 @@
+[
+  {
+    "_id": {"$oid": "62eed05fb7883735823f6f18"},
+    "__v": 0,
+    "country": {"$oid": "62eed05fb7883735823f6f15"},
+    "name": "Surat"
+  },
+  {
+    "_id": {"$oid": "62f17b2f746cd34b820b1c28"},
+    "__v": 0,
+    "country": {"$oid": "62eed05fb7883735823f6f15"},
+    "name": "Andhra Pradesh"
+  },
+  {
+    "_id": {"$oid": "62f17b2f746cd34b820b1c29"},
+    "__v": 0,
+    "country": {"$oid": "62eed05fb7883735823f6f15"},
+    "name": "Assam"
+  },
+  {
+    "_id": {"$oid": "62f17b5e746cd34b820b1c2a"},
+    "__v": 0,
+    "country": {"$oid": "62f17a8d746cd34b820b1c24"},
+    "name": "Alabama"
+  },
+  {
+    "_id": {"$oid": "62f17b5f746cd34b820b1c2b"},
+    "__v": 0,
+    "country": {"$oid": "62f17a8d746cd34b820b1c24"},
+    "name": "Alaska"
+  },
+  {
+    "_id": {"$oid": "62f17b5f746cd34b820b1c2c"},
+    "__v": 0,
+    "country": {"$oid": "62f17a8d746cd34b820b1c24"},
+    "name": "Arizona"
+  },
+  {
+    "_id": {"$oid": "62f17bda746cd34b820b1c30"},
+    "__v": 0,
+    "country": {"$oid": "62f17ae1746cd34b820b1c27"},
+    "name": "Bavaria"
+  },
+  {
+    "_id": {"$oid": "62f17bdb746cd34b820b1c31"},
+    "__v": 0,
+    "country": {"$oid": "62f17ae1746cd34b820b1c27"},
+    "name": "Bremen"
+  },
+  {
+    "_id": {"$oid": "62f17bdb746cd34b820b1c32"},
+    "__v": 0,
+    "country": {"$oid": "62f17ae1746cd34b820b1c27"},
+    "name": "Hamburg"
+  }
+]
