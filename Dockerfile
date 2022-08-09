@@ -17,4 +17,4 @@ COPY . .
 RUN npm run build
 
 # Start the server using the production build
-CMD [ "sh", "-c", "npm run start:dev"]
+CMD [ "sh", "-c", "npm run start"]

@@ -1,13 +1,17 @@
 version: '3.7'
 services:
   softum-api:
+    container_name: 'api_container'
     build:
       context: .
       dockerfile: './Dockerfile'
     ports:
       - '${APP_PORT}:3000'
+    networks:
+      - server-network
   mongodb_container:
     image: mongo:latest
+    container_name: 'mongodb_container'
     environment:
       MONGO_INITDB_ROOT_USERNAME: '${DB_USERNAME}'
       MONGO_INITDB_ROOT_PASSWORD: '${DB_PASSWORD}'
@@ -15,6 +19,11 @@ services:
       - '${DB_PORT}:${DB_PORT}'
     volumes:
       - mongodb_data_container:/data/db
+    networks:
+      - server-network
+
+networks:
+  server-network:
 
 volumes:
   mongodb_data_container:
