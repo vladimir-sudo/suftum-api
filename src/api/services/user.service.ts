@@ -1,7 +1,7 @@
 import {Injectable, NotFoundException} from '@nestjs/common';
 import {InjectModel} from "@nestjs/mongoose";
 import {User, UserDocument} from "../schemas/user.schema";
-import {Model} from "mongoose";
+import {Model, Types} from "mongoose";
 import {CreateUserDto} from "../dto/createUser.dto";
 import {GetUsersDto} from "../dto/getUsers.dto";
 import {UpdateUserDto} from "../dto/updateUser.dto";
@@ -66,25 +66,35 @@ export class UserService {
             search.gender = getUsersDto.gender;
         }
 
-        let users = await this.userModel.find(search)
-            .populate(['country', 'state', 'city'])
-            .exec();
+        const populateCountry: any = {path: 'country', match: {}};
+        const populateState: any = {path: 'state', match: {}};
+        const populateCity: any = {path: 'city', match: {}};
 
         if (!!getUsersDto.country) {
-            users = users.filter((u: any) => {
-                return getUsersDto.country === u.country._id.toString();
-            })
+            populateCountry.match._id = getUsersDto.country;
         }
         if (!!getUsersDto.city) {
-            users = users.filter((u: any) => {
-                return getUsersDto.city === u.city._id.toString();
-            })
+            populateCity.match._id = getUsersDto.city;
         }
         if (!!getUsersDto.state) {
-            users = users.filter((u: any) => {
-                return getUsersDto.state === u.state._id.toString();
-            })
+            populateState.match._id = getUsersDto.state;
         }
-        return users
+
+        const populate = [populateCountry, populateCountry, populateCity];
+
+        let users =  await this.userModel.find(search)
+            .populate(populate)
+            .exec();
+
+        users = users.filter((u: User) => u.country && u.state && u.city);
+
+        return users;
+    }
+
+    public paginate(users: User[], skip: number = 0, limit: number = 10) {
+        return {
+            length: users.length,
+            users: users.splice(skip ?? 0, limit ?? 5),
+        };
     }
 }

@@ -14,9 +14,9 @@ export class UserController {
         try {
             const users = await this.usersService.findAll(getUsersDto);
 
-            return response.status(HttpStatus.CREATED).json({
-                users,
-            });
+            return response.status(HttpStatus.CREATED).json(
+                this.usersService.paginate(users, getUsersDto.skip, getUsersDto.limit)
+            );
         } catch (err) {
             return response.status(HttpStatus.BAD_REQUEST).json({
                 statusCode: 400,
